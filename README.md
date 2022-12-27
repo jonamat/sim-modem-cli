@@ -7,17 +7,7 @@ A command line interface for SIM modems. It uses the [sim-modem](https://github.
 ### From pip
 
 ```bash
-pip install sim-modem-cli
-```
-
-### From releases page
-
-Download the latest release from [here](https://github.com/jonamat/sim-modem-cli/releases).
-
-### From script
-
-```bash
-bash <(curl -s https://raw.githubusercontent.com/jonamat/sim-modem-cli/master/install.sh)
+python3 -m pip install sim-modem-cli
 ```
 
 ## Usage
