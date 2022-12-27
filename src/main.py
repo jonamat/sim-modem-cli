@@ -1,3 +1,4 @@
+import json
 import typer
 from sim_modem import Modem, NetworkMode, SignalQuality
 import pkg_resources
@@ -9,59 +10,70 @@ app = typer.Typer(
     no_args_is_help=True,
 )
 
-
 @app.command()
-def get_model_identification(address: str, baudrate=460800, timeout=5, debug=False):
+def get_model_identification(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_model_identification()
-    print(result)
+    print(f"Model: {result}")
     m.close()
 
 
 @app.command()
 def get_manufacturer_identification(
-    address: str, baudrate=460800, timeout=5, debug=False
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
 ):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_manufacturer_identification()
-    print(result)
+    print(f"Manufacturer: {result}")
     m.close()
 
 
 @app.command()
-def get_serial_number(address: str, baudrate=460800, timeout=5, debug=False):
+def get_serial_number(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_serial_number()
-    print(result)
+    print(f"Serial number: {result}")
     m.close()
 
 
 @app.command()
-def get_firmware_version(address: str, baudrate=460800, timeout=5, debug=False):
+def get_firmware_version(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_firmware_version()
-    print(result)
+    print(f"Firmware version: {result}")
     m.close()
 
 
 @app.command()
-def get_volume(address: str, baudrate=460800, timeout=5, debug=False):
+def get_volume(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_volume()
-    print(result)
+    print(f"Volume: {result}")
     m.close()
 
 
 @app.command()
-def set_volume(address: str, volume, baudrate=460800, timeout=5, debug=False):
+def set_volume(
+    address: str, volume, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.set_volume(volume)
-    print(result)
+    print(f"Volume set to: {result}")
     m.close()
 
 
 @app.command()
-def improve_tdd(address: str, baudrate=460800, timeout=5, debug=False):
+def improve_tdd(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.improve_tdd()
     print(result)
@@ -69,7 +81,9 @@ def improve_tdd(address: str, baudrate=460800, timeout=5, debug=False):
 
 
 @app.command()
-def enable_echo_suppression(address: str, baudrate=460800, timeout=5, debug=False):
+def enable_echo_suppression(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.enable_echo_suppression()
     print(result)
@@ -77,192 +91,251 @@ def enable_echo_suppression(address: str, baudrate=460800, timeout=5, debug=Fals
 
 
 @app.command()
-def disable_echo_suppression(address: str, baudrate=460800, timeout=5, debug=False):
+def disable_echo_suppression(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.disable_echo_suppression()
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
 def get_network_registration_status(
-    address: str, baudrate=460800, timeout=5, debug=False
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
 ):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_network_registration_status()
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
-def get_network_mode(address: str, baudrate=460800, timeout=5, debug=False):
+def get_network_mode(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_network_mode()
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
-def get_network_name(address: str, baudrate=460800, timeout=5, debug=False):
+def get_network_name(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_network_name()
-    print(result)
+    print(f"Network name: {result}")
     m.close()
 
 
 @app.command()
-def get_network_operator(address: str, baudrate=460800, timeout=5, debug=False):
+def get_network_operator(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_network_operator()
-    print(result)
+    print(f"Network operator: {result}")
     m.close()
 
 
 @app.command()
-def get_signal_quality(address: str, baudrate=460800, timeout=5, debug=False):
+def get_signal_quality(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_signal_quality()
-    print(result)
+    print(f"Signal quality: {result}")
     m.close()
 
 
 @app.command()
-def get_signal_quality_db(address: str, baudrate=460800, timeout=5, debug=False):
+def get_signal_quality_db(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_signal_quality_db()
-    print(result)
+    print(f"Signal quality in decibels: {result}")
     m.close()
 
 
 @app.command()
-def get_signal_quality_range(address: str, baudrate=460800, timeout=5, debug=False):
+def get_signal_quality_range(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_signal_quality_range()
-    print(result.value)
+    print(f"Signal quality: {result.name}")
     m.close()
 
 
 @app.command()
-def get_phone_number(address: str, baudrate=460800, timeout=5, debug=False):
+def get_phone_number(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_phone_number()
-    print(result)
+    print(f"Phone number: {result}")
     m.close()
 
 
 @app.command()
-def get_sim_status(address: str, baudrate=460800, timeout=5, debug=False):
+def get_sim_status(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_sim_status()
-    print(result)
+    print(f"SIM status: {result}")
     m.close()
 
 
 @app.command()
 def set_network_mode(
-    address: str, network_mode: str, baudrate=460800, timeout=5, debug=False
+    address: str,
+    network_mode: str,
+    baudrate: int = 460800,
+    timeout: int = 5,
+    debug: bool = False,
 ):
     m = Modem(address, baudrate, timeout, debug)
     result = m.set_network_mode(NetworkMode[network_mode])
-    print(result)
+    print(f"Network mode set to: {result}")
     m.close()
 
 
 @app.command()
-def call(address: str, number: str, baudrate=460800, timeout=5, debug=False):
+def call(
+    address: str,
+    number: str,
+    baudrate: int = 460800,
+    timeout: int = 5,
+    debug: bool = False,
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.call(number)
-    print(result)
+    print(f"Calling {number}...")
     m.close()
 
 
 @app.command()
-def answer(address: str, baudrate=460800, timeout=5, debug=False):
+def answer(address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False):
     m = Modem(address, baudrate, timeout, debug)
     result = m.answer()
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
-def hangup(address: str, baudrate=460800, timeout=5, debug=False):
+def hangup(address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False):
     m = Modem(address, baudrate, timeout, debug)
     result = m.hangup()
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
-def get_sms_list(address: str, baudrate=460800, timeout=5, debug=False):
+def get_sms_list(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_sms_list()
-    print(result)
+    json_result = json.dumps(result, indent=4)
+    print(f"SMS list: {json_result}")
     m.close()
 
 
 @app.command()
-def empty_sms(address: str, baudrate=460800, timeout=5, debug=False):
+def empty_sms(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.empty_sms()
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
 def send_sms(
-    address: str, number: str, message: str, baudrate=460800, timeout=5, debug=False
+    address: str,
+    number: str,
+    message: str,
+    baudrate: int = 460800,
+    timeout: int = 5,
+    debug: bool = False,
 ):
     m = Modem(address, baudrate, timeout, debug)
     result = m.send_sms(number, message)
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
-def get_sms(address: str, index: int, baudrate=460800, timeout=5, debug=False):
+def get_sms(
+    address: str,
+    index: int,
+    baudrate: int = 460800,
+    timeout: int = 5,
+    debug: bool = False,
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_sms(index)
-    print(result)
+    json_result = json.dumps(result, indent=4)
+    print(f"SMS: {json_result}")
     m.close()
 
 
 @app.command()
-def delete_sms(address: str, index: int, baudrate=460800, timeout=5, debug=False):
+def delete_sms(
+    address: str,
+    index: int,
+    baudrate: int = 460800,
+    timeout: int = 5,
+    debug: bool = False,
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.delete_sms(index)
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
-def get_gps_status(address: str, baudrate=460800, timeout=5, debug=False):
+def get_gps_status(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_gps_status()
-    print(result)
+    print(f"GPS status: {result}")
     m.close()
 
 
 @app.command()
-def start_gps(address: str, baudrate=460800, timeout=5, debug=False):
+def start_gps(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.start_gps()
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
-def stop_gps(address: str, baudrate=460800, timeout=5, debug=False):
+def stop_gps(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.stop_gps()
-    print(result)
+    print("Done")
     m.close()
 
 
 @app.command()
-def get_gps_coordinates(address: str, baudrate=460800, timeout=5, debug=False):
+def get_gps_coordinates(
+    address: str, baudrate: int = 460800, timeout: int = 5, debug: bool = False
+):
     m = Modem(address, baudrate, timeout, debug)
     result = m.get_gps_coordinates()
-    print(result)
+    print(f"GPS coordinates: {result}")
     m.close()
 
 
