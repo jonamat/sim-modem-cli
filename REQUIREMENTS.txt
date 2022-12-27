@@ -1,0 +1,2 @@
+typer==0.7.0
+sim-modem==1.0.2

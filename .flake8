@@ -1,0 +1,10 @@
+[flake8]
+exclude = ./.*,.coveragerc
+max-line-length = 119
+# flake8-quotes
+inline-quotes = double
+# flake8-coding
+no-accept-encodings = True
+# flake8-tidy-imports
+banned-modules = __future__ = this project supports python3 only
+ignore = E800, C408, W503, N806
