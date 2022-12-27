@@ -66,7 +66,7 @@ def set_volume(
 ):
     m = Modem(address, baudrate, timeout, debug)
     result = m.set_volume(volume)
-    print(f"Volume set to: {result}")
+    print("Done")
     m.close()
 
 
