@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "sim-modem-cli"
 
-version = "1.0.0"
+version = "1.0.1"
 description = "Easy CLI for interfacing with mobile modems"
 readme = "README.md"
 keywords = ["modem", "sms", "gsm", "sim", "atcommands"]
@@ -13,7 +13,7 @@ requires-python = ">=3.7"
 license = {text = "MIT"}
 dependencies = [
     'typer==0.7.0',
-    'sim-modem==1.0.2'
+    'sim-modem==1.0.3'
 ]
 
 [project.scripts]
