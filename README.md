@@ -14,6 +14,9 @@ python3 -m pip install sim-modem-cli
 
 ```bash
 sim-modem-cli <command> address [<args>...] [--options] 
+
+$ sim-modem-cli get_signal_quality_db /dev/ttyUSB3
+Signal quality: -19 dB
 ```
 
 ### Options
